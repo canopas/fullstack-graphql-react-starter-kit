@@ -19,3 +19,9 @@
 
 # Go workspace file
 go.work
+
+.DS_Store
+.env
+*.json
+base64
+db/migrations.go
