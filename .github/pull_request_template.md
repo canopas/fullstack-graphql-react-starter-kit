@@ -13,14 +13,15 @@
 - [ ] Add API documentation
 - [ ] Add unit tests for APIs
 - [ ] Use modular architecture (create files and folders module-wise)
-- [ ] Add images, videos, or gifs of UI 
+- [ ] Add images, videos, or gifs of UI
 - [ ] Add page speed score screenshot of UI (It should be > 85 for mobile and > 90 for desktops)
 
 **Design should be tested on:**
+
 - [ ] Inspector (all iPhones and android devices like samsung, motorola)
 - [ ] Desktop (chrome, firefox, safari)
-- [ ] Laptop / Macbook  (chrome, firefox, safari)
+- [ ] Laptop / Macbook (chrome, firefox, safari)
 - [ ] iPhone(safari)
-- [ ] Available android devices  (chrome, firefox)
+- [ ] Available android devices (chrome, firefox)
 - [ ] iPad(safari)
 - [ ] Tablet (chrome, firefox)
