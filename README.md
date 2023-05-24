@@ -1,12 +1,13 @@
 # omniDashboard
 
-Dashboard for businesses
+Dashboard for businesses -- Backend
 
 ## Requirements
 
 - Node v19.0.0
+- Typescript
 
-## Backend
+## Node Backend
 
 - Install dependencies
 
@@ -39,6 +40,13 @@ Dashboard for businesses
 ```
 git config core.hooksPath .githooks
 ```
+
+## Dependencies
+
+- [express](https://expressjs.com/)
+- [@apollo/server](https://www.apollographql.com/docs/apollo-server/)
+- [graphql-js](https://github.com/graphql/graphql-js)
+- [sequelize](https://sequelize.org/docs/v6/getting-started/)
 
 ## LICENSE
 
