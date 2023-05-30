@@ -50,4 +50,4 @@ git config core.hooksPath .githooks
 
 ## LICENSE
 
-Canopas is released under the [GNU V3](https://github.com/canopas/canopas-website/blob/master/LICENSE.md).
+Canopas is released under the [MIT](https://github.com/canopas/canopas-website/blob/master/LICENSE).
