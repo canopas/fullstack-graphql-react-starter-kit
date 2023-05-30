@@ -50,4 +50,4 @@ git config core.hooksPath .githooks
 
 ## LICENSE
 
-Canopas is released under the [MIT](https://github.com/canopas/canopas-website/blob/master/LICENSE).
+Omnidashboard is released under the [MIT](https://github.com/canopas/omnidashboard/blob/main/LICENSE.md).
