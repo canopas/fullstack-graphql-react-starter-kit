@@ -4,7 +4,7 @@ Dashboard for businesses -- Backend
 
 ## Requirements
 
-- Node v19.0.0
+- Node v20.3.1
 - Typescript
 
 ## Node Backend

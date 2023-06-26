@@ -9,6 +9,10 @@ class Business extends Model {
   @Field()
   public name!: string;
   @Field()
+  public description!: string;
+  @Field()
+  public address!: string;
+  @Field()
   public business_type_id!: number;
 }
 
@@ -20,6 +24,14 @@ Business.init(
       autoIncrement: true,
     },
     name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    description: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    address: {
       type: DataTypes.STRING,
       allowNull: false,
     },
