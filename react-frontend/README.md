@@ -4,7 +4,7 @@ Dashboard for businesses -- Frontend
 
 ## Requirements
 
-- Node v19.0.0
+- Node v20.3.1
 
 ## React Frontend
 
@@ -40,3 +40,4 @@ Dashboard for businesses -- Frontend
 - [@apollo/client](https://www.apollographql.com/docs/react/)
 - [graphql-js](https://github.com/graphql/graphql-js)
 - [vite](https://vitejs.dev/guide/)
+- [tailwindcss](https://tailwindcss.com/docs/guides/create-react-app)

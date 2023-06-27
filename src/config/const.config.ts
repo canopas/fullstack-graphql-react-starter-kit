@@ -16,8 +16,13 @@ const statusCodes = {
   SERVER_ERROR: 500,
 };
 
+const errorCodes = {
+  UNIQUE_CONSTRAINT_ERROR: "UNIQUE_CONSTRAINT_ERROR",
+  DATABASE_ERROR: "DATABASE_ERROR",
+};
+
 const businessTypes = {
   RESTAURANT: 1,
 };
 
-export { roles, statusCodes, businessTypes };
+export { roles, statusCodes, businessTypes, errorCodes };

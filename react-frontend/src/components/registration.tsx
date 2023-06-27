@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import reactLogo from "../assets/images/registration-800w.webp";
 import { useMutation } from "@apollo/client";
 import { CREATE_BUSINESS_MUTATION } from "../graphQL/mutations";
 import Modal from "./modal";
+import { messages } from "../config/const";
+import { validEmail, validPhone } from "../config/utils";
 
 export default function Registration() {
   const user = {
@@ -19,7 +21,7 @@ export default function Registration() {
   const [emailError, setEmailError] = useState("");
   const [phoneError, setPhoneError] = useState("");
 
-  const [createUser] = useMutation(CREATE_BUSINESS_MUTATION);
+  const [createBusinessUser] = useMutation(CREATE_BUSINESS_MUTATION);
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
@@ -27,37 +29,28 @@ export default function Registration() {
       return;
     }
     try {
-      await createUser({
+      await createBusinessUser({
         variables: {
           data: {
             name: formState.name,
             email: formState.email,
             phone: formState.phone,
             city: formState.city,
-            business_name: formState.businessName,
+            business: {
+              name: formState.businessName,
+            },
           },
         },
       });
       setModalVisible(true);
       setModalTitle("Success");
       setModalContent("Thank you. We will send you approval soon.");
-    } catch (error) {
+    } catch (error: any) {
       setModalVisible(true);
       setModalTitle("Error");
-      setModalContent("Something went wrong!! Please try again.");
+      setModalContent(error.message || messages.ERROR);
     }
     setFormState(user);
-  };
-
-  const isValidPhone = () => {
-    const phoneRegex = /^[0-9]{10}$/;
-    return !phoneRegex.test(formState.phone);
-  };
-
-  const isValidEmail = () => {
-    var emailRegx =
-      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return !emailRegx.test(formState.email);
   };
 
   return (
@@ -70,7 +63,7 @@ export default function Registration() {
       </h2>
       <div className="flex flex-col lg:flex-row justify-center w-full ">
         <img
-          className="hidden lg:block w-[50%] xl:w-auto"
+          className="hidden lg:block w-1/2 xl:w-auto"
           src={reactLogo}
           alt="business-people"
         ></img>
@@ -106,7 +99,9 @@ export default function Registration() {
                 type="phone"
                 onBlur={() =>
                   setPhoneError(
-                    isValidPhone() ? "Please enter valid phone number" : ""
+                    !validPhone(formState.phone)
+                      ? "Please enter valid phone number"
+                      : ""
                   )
                 }
                 className="block mt-2 w-full border-gray-300 rounded-md shadow-sm p-2 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
@@ -157,7 +152,9 @@ export default function Registration() {
                 value={formState.email}
                 onBlur={() =>
                   setEmailError(
-                    isValidEmail() ? "Please enter valid email" : ""
+                    !validEmail(formState.email)
+                      ? "Please enter valid email"
+                      : ""
                   )
                 }
                 onChange={(e) =>

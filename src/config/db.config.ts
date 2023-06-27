@@ -22,7 +22,19 @@ const sequelize = new Sequelize(database!, username!, password, {
     freezeTableName: true,
     underscored: true,
   },
-  timezone: Intl.DateTimeFormat().resolvedOptions().timeZone, // get client's timeZone
+  timezone: tzOffset(), // get client's timeZone,  format: +5:30
 });
+
+function tzOffset() {
+  // Get the current timezone offset in minutes
+  const tzOffset = -new Date().getTimezoneOffset();
+
+  // Convert the offset to the desired format (+HH:MM or -HH:MM)
+  const hours = Math.floor(tzOffset / 60);
+  const minutes = Math.abs(tzOffset % 60);
+  return `${hours >= 0 ? "+" : "-"}${Math.abs(hours)
+    .toString()
+    .padStart(2, "0")}:${minutes.toString().padStart(2, "0")}`;
+}
 
 export default sequelize;

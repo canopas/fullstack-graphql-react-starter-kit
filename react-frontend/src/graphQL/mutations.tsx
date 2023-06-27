@@ -1,8 +1,8 @@
 import { gql } from "@apollo/client";
 
 const CREATE_BUSINESS_MUTATION = gql`
-  mutation CreateUser($data: UserInput!) {
-    createUser(data: $data) {
+  mutation createBusinessUser($data: UserInput!) {
+    createBusinessUser(data: $data) {
       name
       email
       phone
