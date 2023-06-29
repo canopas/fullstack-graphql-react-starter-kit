@@ -14,6 +14,8 @@ class Business extends Model {
   public address!: string;
   @Field()
   public business_type_id!: number;
+  @Field()
+  public status: number;
 }
 
 Business.init(
@@ -38,6 +40,10 @@ Business.init(
     business_type_id: {
       type: DataTypes.NUMBER,
       allowNull: false,
+    },
+    status: {
+      type: DataTypes.NUMBER,
+      defaultValue: 0,
     },
   },
   {

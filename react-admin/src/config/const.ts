@@ -10,8 +10,14 @@ const gender = {
   OTHER: 3,
 };
 
+const status = {
+  PENDING: 0,
+  APPROVED: 1,
+  REJECTED: 2,
+};
+
 const messages = {
   ERROR: "Something went wrong!! Please try again.",
 };
 
-export { roles, gender, messages };
+export { roles, gender, status, messages };

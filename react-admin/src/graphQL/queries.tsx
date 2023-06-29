@@ -7,8 +7,11 @@ const GET_USERS = gql`
       name
       email
       city
+      username
+      password
       business {
         name
+        status
       }
     }
   }

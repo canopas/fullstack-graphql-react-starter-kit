@@ -1,23 +1,35 @@
 import { useMutation, useQuery } from "@apollo/client";
 import { GET_USERS } from "../../graphQL/queries.jsx";
-import { DELETE_USER } from "../../graphQL/mutations.jsx";
+import { DELETE_USER, UPDATE_USER } from "../../graphQL/mutations.jsx";
 import DefaultLayout from "../../layout/DefaultLayout.jsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
+import {
+  faEdit,
+  faSquareCheck,
+  faTrash,
+  faXmarkSquare,
+} from "@fortawesome/free-solid-svg-icons";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
 import ErrorAlert from "../Alerts/Error.jsx";
+import SuccessAlert from "../Alerts/Success.jsx";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { render } from "@react-email/render";
+import { Email } from "../Email/approval";
+import { sendSESMail } from "../../config/utils.js";
+import { status } from "../../config/const.js";
 
 library.add(faEdit, faTrash);
 
 const Users = () => {
-  const [modalVisible, setModalVisible] = useState(false);
+  const [sucessAlert, setSucessAlert] = useState(false);
+  const [errorAlert, setErrorAlert] = useState(false);
   const [modalContent, setModalContent] = useState("");
   const [modalTitle, setModalTitle] = useState("");
   const [destoryUser] = useMutation(DELETE_USER);
+  const [updateUser] = useMutation(UPDATE_USER);
   const { data, refetch }: any = useQuery(GET_USERS);
   var users: any = data ? data.users : [];
 
@@ -49,19 +61,65 @@ const Users = () => {
     })
       .then((result) => {
         if (!result.data.deleteUser) {
-          setModalVisible(true);
+          setErrorAlert(true);
           setModalTitle("Error");
           setModalContent("Entry not found!! Please try other data.");
         }
         refetch();
       })
       .catch((error: any) => {
-        setModalVisible(true);
+        setErrorAlert(true);
         setModalTitle("Error");
         setModalContent(
           "Error deleting item: " + error.message ? error.message : ""
         );
       });
+  };
+
+  const sendMail = async (user: any, bStatus: number) => {
+    if (
+      !user.username ||
+      user.username == "" ||
+      !user.password ||
+      user.password == ""
+    ) {
+      setErrorAlert(true);
+      setModalTitle("Error");
+      setModalContent("Please set username and passwords for the user first.");
+      return;
+    }
+
+    const emailHtml = render(
+      <Email
+        username={user.username}
+        password={user.password}
+        mailStatus={bStatus}
+      />
+    );
+
+    sendSESMail(
+      emailHtml,
+      "Omnidashboard: Business request status",
+      user.email
+    );
+
+    await updateUser({
+      variables: {
+        id: user.id.toString(),
+        data: {
+          business: {
+            status: bStatus,
+          },
+        },
+      },
+    });
+
+    setSucessAlert(true);
+    setModalTitle("Success");
+    setModalContent(
+      (bStatus == status.APPROVED ? "Approval" : "Rejection") +
+        " mail sent successfully"
+    );
   };
 
   return (
@@ -72,7 +130,7 @@ const Users = () => {
         </h4>
 
         <div className="flex flex-col">
-          <div className="grid grid-cols-3 rounded-sm bg-grayLight dark:bg-darkGrayBlue md:grid-cols-4 ">
+          <div className="grid grid-cols-4 rounded-sm bg-grayLight dark:bg-darkGrayBlue md:grid-cols-5 ">
             <div className="p-2.5 xl:p-5">
               <h5 className="text-sm font-medium uppercase xsm:text-base">
                 Name
@@ -91,13 +149,27 @@ const Users = () => {
             </div>
             <div className="p-2.5 text-center xl:p-5">
               <h5 className="text-sm font-medium uppercase xsm:text-base">
+                Status
+              </h5>
+            </div>
+            <div className="p-2.5 text-center xl:p-5">
+              <h5 className="text-sm font-medium uppercase xsm:text-base">
                 Actions
               </h5>
             </div>
           </div>
-          {modalVisible ? (
+          {errorAlert ? (
             <ErrorAlert
-              visible={modalVisible}
+              visible={errorAlert}
+              title={modalTitle}
+              content={modalContent}
+            />
+          ) : (
+            ""
+          )}
+          {sucessAlert ? (
+            <SuccessAlert
+              visible={sucessAlert}
               title={modalTitle}
               content={modalContent}
             />
@@ -109,7 +181,7 @@ const Users = () => {
                 return (
                   <div
                     key={user.id}
-                    className="grid grid-cols-3 border-b border-stroke dark:border-strokedark md:grid-cols-4"
+                    className="grid grid-cols-4 border-b border-stroke dark:border-strokedark md:grid-cols-5"
                   >
                     <div className="flex items-center gap-3 p-2.5 xl:p-5">
                       <p className="text-black dark:text-white">{user.name}</p>
@@ -123,6 +195,26 @@ const Users = () => {
                       <p className="text-black dark:text-white">
                         {user.business ? user.business.name : ""}
                       </p>
+                    </div>
+                    <div className="flex items-center justify-center gap-4 p-2.5 xl:p-5">
+                      <FontAwesomeIcon
+                        className={` h-7  ${
+                          user.business.status == status.APPROVED
+                            ? "pointer-events-none text-success"
+                            : ""
+                        }`}
+                        icon={faSquareCheck}
+                        onClick={() => sendMail(user, status.APPROVED)}
+                      />
+                      <FontAwesomeIcon
+                        className={` h-7 ${
+                          user.business.status == status.REJECTED
+                            ? "pointer-events-none text-danger"
+                            : ""
+                        }`}
+                        icon={faXmarkSquare}
+                        onClick={() => sendMail(user, status.REJECTED)}
+                      />
                     </div>
 
                     <div className="flex items-center justify-center gap-4 p-2.5 xl:p-5">

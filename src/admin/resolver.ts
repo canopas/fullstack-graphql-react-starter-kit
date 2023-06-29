@@ -1,6 +1,6 @@
 import { Resolver, Mutation, Arg, Query } from "type-graphql";
 import Admin, { AdminInput } from "./model";
-import { roles } from "../config/const.config";
+import { roles, statusCodes } from "../config/const.config";
 import { handleErrors } from "../util/handlers.util";
 
 @Resolver(() => Admin)
@@ -24,7 +24,7 @@ export class AdminResolver {
 
   @Mutation(() => Admin)
   async adminLogin(@Arg("data") input: AdminInput): Promise<Admin> {
-    let admin: any = { email: "" };
+    let admin: any = null;
     try {
       const existingUser = await Admin.findOne({
         where: { email: input.email },
@@ -34,6 +34,13 @@ export class AdminResolver {
       }
     } catch (error: any) {
       handleErrors(error);
+    }
+
+    if (admin == null) {
+      handleErrors({
+        code: statusCodes.UNAUTHORIZED,
+        errors: [{ message: "Invalid credentials!!" }],
+      });
     }
     return admin;
   }

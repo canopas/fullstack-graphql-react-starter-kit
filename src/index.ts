@@ -23,7 +23,9 @@ async function main() {
     formatError: (error: any) => {
       // Access the error code from the extensions field
       return {
-        status: error.status ? error.status : statusCodes.SERVER_ERROR,
+        status: error.extensions.status
+          ? error.extensions.status
+          : statusCodes.SERVER_ERROR,
         message: error.message,
         code: error.extensions.code || "INTERNAL_SERVER_ERROR",
         path: error.path,

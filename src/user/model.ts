@@ -29,8 +29,8 @@ class User extends Model {
 
 @InputType()
 export class BusinessInput {
-  @Field()
-  name!: string;
+  @Field({ nullable: true })
+  name?: string;
   @Field({ nullable: true })
   description?: string;
   @Field({ nullable: true })
@@ -41,14 +41,16 @@ export class BusinessInput {
   business_type_id?: number;
   @Field({ nullable: true })
   user_id?: number;
+  @Field({ nullable: true })
+  status?: number;
 }
 
 @InputType()
 export class UserInput {
   @Field({ nullable: true })
   name?: string;
-  @Field()
-  email!: string;
+  @Field({ nullable: true })
+  email?: string;
   @Field({ nullable: true })
   phone?: string;
   @Field({ nullable: true })
