@@ -35,7 +35,14 @@ export class UserResolver {
 
   @Mutation(() => User)
   async createBusinessUser(@Arg("data") input: UserInput): Promise<User> {
-    if (!input.business) {
+    if (!input.email || input.email == "") {
+      throw new BadRequestException(
+        "Email is required!",
+        ApolloServerErrorCode.BAD_REQUEST
+      );
+    }
+
+    if (!input.business || !input.business.name || input.business.name == "") {
       throw new BadRequestException(
         "Business details are required!",
         ApolloServerErrorCode.BAD_REQUEST
@@ -100,6 +107,7 @@ export class UserResolver {
             name: input.business.name,
             description: input.business.description,
             address: input.business.address,
+            status: input.business.status,
           },
           {
             where: { user_id: id },

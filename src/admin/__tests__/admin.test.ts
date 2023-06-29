@@ -2,6 +2,7 @@ import { AdminResolver } from "../resolver";
 import Admin, { AdminInput } from "../model";
 import ServerErrorException from "../../exceptions/ServerErrorException";
 import BadRequestException from "../../exceptions/BadRequestException";
+import UnauthorizedException from "../../exceptions/UnauthorizedException";
 
 describe("UserResolver", () => {
   let adminResolver: AdminResolver;
@@ -67,6 +68,20 @@ describe("UserResolver", () => {
   });
 
   describe("adminLogin", () => {
+    it("should handle unauthorized error during admin login", async () => {
+      const findMock = jest.spyOn(Admin, "findOne").mockResolvedValueOnce(null);
+      try {
+        input.password = "";
+        await adminResolver.adminLogin(input);
+      } catch (error: any) {
+        expect(error).toBeInstanceOf(UnauthorizedException);
+        expect(error.message).toBe("Invalid credentials!!");
+        expect(findMock).toHaveBeenCalledTimes(1);
+      }
+
+      findMock.mockRestore(); // Restore the original implementation
+    });
+
     it("should handle errors during admin login", async () => {
       const findMock = jest
         .spyOn(Admin, "findOne")

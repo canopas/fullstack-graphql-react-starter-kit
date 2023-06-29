@@ -6,9 +6,9 @@ class HttpException extends GraphQLError {
   extensions: {};
   constructor(status: number, message: string, code?: string) {
     super(message);
-    this.status = status;
+
     this.message = message;
-    this.extensions = { code: code };
+    this.extensions = { code: code, status: status };
   }
 }
 

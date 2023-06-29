@@ -14,7 +14,7 @@ const ErrorAlert = ({ visible, title, content }: ModalProps) => {
       {!open ? (
         ""
       ) : (
-        <div className="absolute inset-0 m-auto w-1/2 rounded-sm p-4 md:p-6 xl:p-9">
+        <div className="absolute inset-0 m-auto w-1/2 rounded-sm p-4 md:p-6 xl:p-9 z-[1000]">
           <div className="flex flex-col gap-7.5">
             {/* <!-- Alerts Item --> */}
             <div className="flex w-full border-l-6 border-[#F87171] bg-[#FEE2E2] px-7 py-8 dark:bg-[#1B1B24] md:p-9">

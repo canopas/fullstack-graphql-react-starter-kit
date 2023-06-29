@@ -34,7 +34,6 @@ describe("UserResolver", () => {
 
   const input: UserInput = {
     name: "user1",
-    email: "user1@example.com",
     phone: "123456789",
     city: "surat",
   } as UserInput;
@@ -108,8 +107,18 @@ describe("UserResolver", () => {
   });
 
   describe("createBusinessUser", () => {
+    it("should handle bad request error for email during user creation", async () => {
+      try {
+        await userResolver.createBusinessUser(input);
+      } catch (error: any) {
+        expect(error).toBeInstanceOf(BadRequestException);
+        expect(error.message).toBe("Email is required!");
+      }
+    });
+
     it("should handle bad request error during user creation", async () => {
       try {
+        input.email = "user1@example.com";
         await userResolver.createBusinessUser(input);
       } catch (error: any) {
         expect(error).toBeInstanceOf(BadRequestException);
