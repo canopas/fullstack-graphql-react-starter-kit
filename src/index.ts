@@ -8,11 +8,12 @@ import { AdminResolver } from "./admin/resolver";
 import cors from "cors";
 import dotenv from "dotenv";
 import { statusCodes } from "./config/const.config";
+import { BusinessUserResolver } from "./business_user/resolver";
 dotenv.config();
 
 async function main() {
   const schema = await buildSchema({
-    resolvers: [UserResolver, AdminResolver],
+    resolvers: [UserResolver, AdminResolver, BusinessUserResolver],
     emitSchemaFile: true,
     validate: false,
   });
@@ -43,7 +44,7 @@ async function main() {
     express.json(),
     expressMiddleware(server, {
       context: async ({ req }) => ({ token: req.headers.token }),
-    })
+    }),
   );
 
   await new Promise<void>((resolve) => app.listen({ port: 4000 }, resolve));

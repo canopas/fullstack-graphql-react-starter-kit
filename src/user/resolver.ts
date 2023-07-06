@@ -5,7 +5,7 @@ import { roles, businessTypes } from "../config/const.config";
 import { Op } from "sequelize";
 import BadRequestException from "../exceptions/BadRequestException";
 import { ApolloServerErrorCode } from "@apollo/server/errors";
-import { handleErrors } from "../util/handlers.util";
+import { generateRandomString, handleErrors } from "../util/handlers.util";
 
 @Resolver(() => User)
 export class UserResolver {
@@ -38,14 +38,14 @@ export class UserResolver {
     if (!input.email || input.email == "") {
       throw new BadRequestException(
         "Email is required!",
-        ApolloServerErrorCode.BAD_REQUEST
+        ApolloServerErrorCode.BAD_REQUEST,
       );
     }
 
     if (!input.business || !input.business.name || input.business.name == "") {
       throw new BadRequestException(
         "Business details are required!",
-        ApolloServerErrorCode.BAD_REQUEST
+        ApolloServerErrorCode.BAD_REQUEST,
       );
     }
 
@@ -68,6 +68,7 @@ export class UserResolver {
           user_id: user.id,
           description: "",
           address: "",
+          link_id: generateRandomString(30),
         });
       }
     } catch (error: any) {
@@ -80,7 +81,7 @@ export class UserResolver {
   @Mutation(() => User)
   async updateUser(
     @Arg("id") id: string,
-    @Arg("data") input: UserInput
+    @Arg("data") input: UserInput,
   ): Promise<User> {
     try {
       // update user
@@ -97,7 +98,7 @@ export class UserResolver {
         },
         {
           where: { id: id },
-        }
+        },
       );
 
       if (input.business) {
@@ -108,10 +109,12 @@ export class UserResolver {
             description: input.business.description,
             address: input.business.address,
             status: input.business.status,
+            username: input.username,
+            password: input.password,
           },
           {
             where: { user_id: id },
-          }
+          },
         );
       }
     } catch (error: any) {
@@ -136,7 +139,7 @@ export class UserResolver {
   async findUserByID(id: string): Promise<User> {
     let user: any;
     try {
-      // create user
+      // find user
       user = await User.findOne({
         where: { id: id },
         include: {

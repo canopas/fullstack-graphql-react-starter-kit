@@ -6,7 +6,7 @@ class UnauthorizedException extends HttpException {
     super(
       statusCodes.UNAUTHORIZED,
       msg || "User is not authorized",
-      errorCodes.UNAUTHORIZED_ERROR
+      errorCodes.UNAUTHORIZED_ERROR,
     );
   }
 }

@@ -10,12 +10,18 @@ class Business extends Model {
   public name!: string;
   @Field()
   public description!: string;
-  @Field()
-  public address!: string;
+  @Field({ nullable: true })
+  public address: string;
   @Field()
   public business_type_id!: number;
-  @Field()
+  @Field({ nullable: true })
   public status: number;
+  @Field({ nullable: true })
+  public username: string;
+  @Field({ nullable: true })
+  public password: string;
+  @Field({ nullable: true })
+  public link_id?: string;
 }
 
 Business.init(
@@ -45,11 +51,23 @@ Business.init(
       type: DataTypes.NUMBER,
       defaultValue: 0,
     },
+    username: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    link_id: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
   },
   {
     sequelize,
     modelName: "business_details",
-  }
+  },
 );
 
 export default Business;

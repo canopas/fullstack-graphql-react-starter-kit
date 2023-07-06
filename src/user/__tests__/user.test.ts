@@ -47,7 +47,7 @@ describe("UserResolver", () => {
       const findMock = jest
         .spyOn(User, "findAll")
         .mockRejectedValueOnce(
-          new ServerErrorException("An error occurred at server")
+          new ServerErrorException("An error occurred at server"),
         );
 
       try {
@@ -78,7 +78,7 @@ describe("UserResolver", () => {
       const findMock = jest
         .spyOn(User, "findOne")
         .mockRejectedValueOnce(
-          new ServerErrorException("An error occurred at server")
+          new ServerErrorException("An error occurred at server"),
         );
 
       try {
@@ -97,7 +97,7 @@ describe("UserResolver", () => {
         .spyOn(User, "findOne")
         .mockResolvedValueOnce(users[0]);
 
-      const result = await userResolver.user("1");
+      const result = await userResolver.user("4");
 
       expect(result).toEqual(users[0]);
       expect(findMock).toHaveBeenCalledTimes(1);
@@ -130,7 +130,7 @@ describe("UserResolver", () => {
       const createMock = jest
         .spyOn(User, "create")
         .mockRejectedValueOnce(
-          new ServerErrorException("An error occurred at server")
+          new ServerErrorException("An error occurred at server"),
         );
 
       try {
@@ -180,7 +180,7 @@ describe("UserResolver", () => {
       const updateMock = jest
         .spyOn(User, "update")
         .mockRejectedValueOnce(
-          new ServerErrorException("An error occurred at server")
+          new ServerErrorException("An error occurred at server"),
         );
 
       try {
@@ -225,7 +225,7 @@ describe("UserResolver", () => {
       const deleteMock = jest
         .spyOn(User, "destroy")
         .mockRejectedValueOnce(
-          new ServerErrorException("An error occurred at server")
+          new ServerErrorException("An error occurred at server"),
         );
 
       try {

@@ -39,7 +39,7 @@ describe("UserResolver", () => {
       const createMock = jest
         .spyOn(Admin, "create")
         .mockRejectedValueOnce(
-          new ServerErrorException("An error occurred at server")
+          new ServerErrorException("An error occurred at server"),
         );
 
       try {
@@ -86,7 +86,7 @@ describe("UserResolver", () => {
       const findMock = jest
         .spyOn(Admin, "findOne")
         .mockRejectedValueOnce(
-          new ServerErrorException("An error occurred at server")
+          new ServerErrorException("An error occurred at server"),
         );
 
       try {

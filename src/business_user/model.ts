@@ -3,7 +3,7 @@ import sequelize from "../config/db.config";
 import { Field, ObjectType, InputType } from "type-graphql";
 
 @ObjectType()
-class Admin extends Model {
+class BusinessUser extends Model {
   @Field()
   public id!: number;
   @Field({ nullable: true })
@@ -11,22 +11,16 @@ class Admin extends Model {
   @Field()
   public email!: string;
   @Field({ nullable: true })
+  public business_id?: string;
+  @Field({ nullable: true })
   public role_id?: number;
+  @Field({ nullable: true })
+  public username?: string;
   @Field({ nullable: true })
   public password?: string;
 }
 
-@InputType()
-export class AdminInput {
-  @Field({ nullable: true })
-  name?: string;
-  @Field()
-  email!: string;
-  @Field({ nullable: true })
-  password!: string;
-}
-
-Admin.init(
+BusinessUser.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -45,6 +39,14 @@ Admin.init(
       type: DataTypes.NUMBER,
       defaultValue: 3,
     },
+    business_id: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    username: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
     password: {
       type: DataTypes.STRING,
       allowNull: true,
@@ -52,8 +54,8 @@ Admin.init(
   },
   {
     sequelize,
-    modelName: "users",
+    modelName: "business_users",
   },
 );
 
-export default Admin;
+export default BusinessUser;

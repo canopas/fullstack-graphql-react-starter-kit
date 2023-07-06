@@ -10,10 +10,10 @@
     "@jridgewell/gen-mapping" "^0.3.0"
     "@jridgewell/trace-mapping" "^0.3.9"
 
-"@apollo/cache-control-types@^1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@apollo/cache-control-types/-/cache-control-types-1.0.2.tgz#f42ed3563acc7f1f50617d65d208483977adc68e"
-  integrity sha512-Por80co1eUm4ATsvjCOoS/tIR8PHxqVjsA6z76I6Vw0rFn4cgyVElQcmQDIZiYsy41k8e5xkrMRECkM2WR8pNw==
+"@apollo/cache-control-types@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@apollo/cache-control-types/-/cache-control-types-1.0.3.tgz#5da62cf64c3b4419dabfef4536b57a40c8ff0b47"
+  integrity sha512-F17/vCp7QVwom9eG7ToauIKdAxpSoadsJnqIfyryLFSkLSOEqu+eC5Z3N8OXcUVStuOMcNHlyraRsA6rRICu4g==
 
 "@apollo/protobufjs@1.2.7":
   version "1.2.7"
@@ -33,24 +33,24 @@
     "@types/long" "^4.0.0"
     long "^4.0.0"
 
-"@apollo/server-gateway-interface@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@apollo/server-gateway-interface/-/server-gateway-interface-1.1.0.tgz#592a6dfcf0359a15785ec62c1b6fa51ca761fe08"
-  integrity sha512-0rhG++QtGfr4YhhIHgxZ9BdMFthaPY6LbhI9Au90osbfLMiZ7f8dmZsEX1mp7O1h8MJwCu6Dp0I/KcGbSvfUGA==
+"@apollo/server-gateway-interface@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@apollo/server-gateway-interface/-/server-gateway-interface-1.1.1.tgz#a79632aa921edefcd532589943f6b97c96fa4d3c"
+  integrity sha512-pGwCl/po6+rxRmDMFgozKQo2pbsSwE91TpsDBAOgf74CRDPXHHtM88wbwjab0wMMZh95QfR45GGyDIdhY24bkQ==
   dependencies:
-    "@apollo/usage-reporting-protobuf" "^4.0.0"
+    "@apollo/usage-reporting-protobuf" "^4.1.1"
     "@apollo/utils.fetcher" "^2.0.0"
     "@apollo/utils.keyvaluecache" "^2.1.0"
     "@apollo/utils.logger" "^2.0.0"
 
-"@apollo/server@^4.7.1":
-  version "4.7.4"
-  resolved "https://registry.yarnpkg.com/@apollo/server/-/server-4.7.4.tgz#b2a999b5a1f6bb909ec1749106b0c6704296a622"
-  integrity sha512-7MwEsBR+4JRfjAzrFIOP0m/NdzNCyVOlRWCO/86zs73CC+trr08FklTD7JD0yx5BJDfyzjdhF2BZ1sEYvp/Waw==
+"@apollo/server@^4.7.5":
+  version "4.7.5"
+  resolved "https://registry.yarnpkg.com/@apollo/server/-/server-4.7.5.tgz#b3f679dd50898f55b6d11dd61efb1f05e59503b5"
+  integrity sha512-XobKpTnW/jbmr0DuJ+8zBzoeL6uEat4CkBN7kOCjhXEUuCNxiLrQGrWFVDqgV7bSdOJr6o2POmZYBPNQXLdyvA==
   dependencies:
-    "@apollo/cache-control-types" "^1.0.2"
-    "@apollo/server-gateway-interface" "^1.1.0"
-    "@apollo/usage-reporting-protobuf" "^4.1.0"
+    "@apollo/cache-control-types" "^1.0.3"
+    "@apollo/server-gateway-interface" "^1.1.1"
+    "@apollo/usage-reporting-protobuf" "^4.1.1"
     "@apollo/utils.createhash" "^2.0.0"
     "@apollo/utils.fetcher" "^2.0.0"
     "@apollo/utils.isnodelike" "^2.0.0"
@@ -75,10 +75,17 @@
     uuid "^9.0.0"
     whatwg-mimetype "^3.0.0"
 
-"@apollo/usage-reporting-protobuf@^4.0.0", "@apollo/usage-reporting-protobuf@^4.1.0":
+"@apollo/usage-reporting-protobuf@^4.1.0":
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/@apollo/usage-reporting-protobuf/-/usage-reporting-protobuf-4.1.0.tgz#b54b8c32702bbe81aa0e399076ddabaf75a13f9b"
   integrity sha512-hXouMuw5pQVkzi8dgMybmr6Y11+eRmMQVoB5TF0HyTwAg9SOq/v3OCuiYqcVUKdBcskU9Msp+XvjAk0GKpWCwQ==
+  dependencies:
+    "@apollo/protobufjs" "1.2.7"
+
+"@apollo/usage-reporting-protobuf@^4.1.1":
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/@apollo/usage-reporting-protobuf/-/usage-reporting-protobuf-4.1.1.tgz#407c3d18c7fbed7a264f3b9a3812620b93499de1"
+  integrity sha512-u40dIUePHaSKVshcedO7Wp+mPiZsaU6xjv9J+VyxpoU/zL6Jle+9zWeG98tr/+SZ0nZ4OXhrbb8SNr0rAPpIDA==
   dependencies:
     "@apollo/protobufjs" "1.2.7"
 
@@ -1556,7 +1563,7 @@ diff@^4.0.1:
   resolved "https://registry.yarnpkg.com/diff/-/diff-4.0.2.tgz#60f3aecb89d5fae520c11aa19efc2bb982aade7d"
   integrity sha512-58lmxKSA4BNyLz+HHMUzlOEpg09FV+ev6ZMe3vJihgdxzgcwZ8VoEEPmALCZG9LmqfVoNMMKpttIYTVG6uDY7A==
 
-dotenv@^16.0.3:
+dotenv@^16.3.1:
   version "16.3.1"
   resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-16.3.1.tgz#369034de7d7e5b120972693352a3bf112172cc3e"
   integrity sha512-IPzF4w4/Rd94bA9imS68tZBaYyBWSCE47V1RGuMrB94iyTOIEwRmVL2x/4An+6mETpLrKJ5hQkB8W4kFAadeIQ==
@@ -1872,7 +1879,7 @@ graphql-subscriptions@^2.0.0:
   dependencies:
     iterall "^1.3.0"
 
-graphql@^16.6.0:
+graphql@^16.7.1:
   version "16.7.1"
   resolved "https://registry.yarnpkg.com/graphql/-/graphql-16.7.1.tgz#11475b74a7bff2aefd4691df52a0eca0abd9b642"
   integrity sha512-DRYR9tf+UGU0KOsMcKAlXeFfX89UiiIZ0dRU3mR0yJfu6OjZqUcp68NnFLnqQU5RexygFoDy1EW+ccOYcPfmHg==
@@ -2677,10 +2684,10 @@ ms@2.1.3, ms@^2.1.1:
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.1.3.tgz#574c8138ce1d2b5861f0b44579dbadd60c6615b2"
   integrity sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==
 
-mysql2@^3.3.1:
-  version "3.4.0"
-  resolved "https://registry.yarnpkg.com/mysql2/-/mysql2-3.4.0.tgz#be1ff972188be9755432168088f1339e8121245e"
-  integrity sha512-l952dVcdWVfEIIxMQ1PNSPHYY2htylG7H9ahrQe9lIgDpEMg3hB0S88OhC/loNSZpV8OcywSjgOzjSjEUiuwiQ==
+mysql2@^3.4.2:
+  version "3.4.2"
+  resolved "https://registry.yarnpkg.com/mysql2/-/mysql2-3.4.2.tgz#b48d78fe09cc4a85d03f7354be2816fa0931c7b9"
+  integrity sha512-hdGwVNke2TJE37gzVvzWRwCFKhrT+5Gy00FDgJUDYArapx3HcaYCJAQUbBiVnB491zLC6HVHNfsmweIotkCRtQ==
   dependencies:
     denque "^2.1.0"
     generate-function "^2.3.1"
@@ -3082,7 +3089,7 @@ sequelize-typescript@^2.1.5:
   dependencies:
     glob "7.2.0"
 
-sequelize@^6.31.1:
+sequelize@^6.32.1:
   version "6.32.1"
   resolved "https://registry.yarnpkg.com/sequelize/-/sequelize-6.32.1.tgz#8e8669a8d6cf711d2d94b33cc721928fad7487f6"
   integrity sha512-3Iv0jruv57Y0YvcxQW7BE56O7DC1BojcfIrqh6my+IQwde+9u/YnuYHzK+8kmZLhLvaziRT1eWu38nh9yVwn/g==
@@ -3376,7 +3383,7 @@ type-fest@^0.21.3:
   resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-0.21.3.tgz#d260a24b0198436e133fa26a524a6d65fa3b2e37"
   integrity sha512-t0rzBq87m3fVcduHDUFhKmyyX+9eo6WQjZvf51Ea/M0Q7+T374Jp1aUiyUl0GKxp8M/OETVHSDvmkyPgvX+X2w==
 
-type-graphql@^2.0.0-beta.1:
+type-graphql@^2.0.0-beta.2:
   version "2.0.0-beta.2"
   resolved "https://registry.yarnpkg.com/type-graphql/-/type-graphql-2.0.0-beta.2.tgz#498e8dee56b8ea1f5c3a5ed99aab8105dcb8f050"
   integrity sha512-MCGxRvNADu5Wp9QEudI/WQgiqHJfjanGcKRk/ErCow6IaG04NNI7o3bjjxQVWC+qDundSOhmaquNdjDiiTbcqQ==
@@ -3396,10 +3403,10 @@ type-is@~1.6.18:
     media-typer "0.3.0"
     mime-types "~2.1.24"
 
-typescript@^5.0.4:
-  version "5.1.3"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.1.3.tgz#8d84219244a6b40b6fb2b33cc1c062f715b9e826"
-  integrity sha512-XH627E9vkeqhlZFQuL+UsyAXEnibT0kWR2FWONlr4sTjvxyJYnyefgrkyECLzM5NenmKzRAy2rR/OlYLA1HkZw==
+typescript@^5.1.6:
+  version "5.1.6"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.1.6.tgz#02f8ac202b6dad2c0dd5e0913745b47a37998274"
+  integrity sha512-zaWCozRZ6DLEWAWFrVDz1H6FVXzUSfTy5FUMWsQlU8Ym5JP9eO4xkTIROFCQvhQf61z6O/G6ugw3SgAnvvm+HA==
 
 undefsafe@^2.0.5:
   version "2.0.5"

@@ -12,6 +12,7 @@ const GET_USERS = gql`
       business {
         name
         status
+        link_id
       }
     }
   }
