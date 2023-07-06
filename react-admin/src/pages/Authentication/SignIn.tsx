@@ -37,7 +37,7 @@ const SignIn = () => {
             email: formState.email,
             password: bcrypt.hashSync(
               formState.password,
-              import.meta.env.VITE_PASSWORD_SALT
+              import.meta.env.VITE_PASSWORD_SALT,
             ),
           },
         },
@@ -108,7 +108,7 @@ const SignIn = () => {
                           setEmailError(
                             !validEmail(formState.email)
                               ? "Please enter valid email"
-                              : ""
+                              : "",
                           )
                         }
                         onChange={(e) =>

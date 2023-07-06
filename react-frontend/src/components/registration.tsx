@@ -101,7 +101,7 @@ export default function Registration() {
                   setPhoneError(
                     !validPhone(formState.phone)
                       ? "Please enter valid phone number"
-                      : ""
+                      : "",
                   )
                 }
                 className="block mt-2 w-full border-gray-300 rounded-md shadow-sm p-2 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
@@ -154,7 +154,7 @@ export default function Registration() {
                   setEmailError(
                     !validEmail(formState.email)
                       ? "Please enter valid email"
-                      : ""
+                      : "",
                   )
                 }
                 onChange={(e) =>

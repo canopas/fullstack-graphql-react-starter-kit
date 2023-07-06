@@ -14,7 +14,7 @@ export const validPhone = (phone: string) => {
 export const sendSESMail = async (
   emailHtml: string,
   data: string,
-  receiver: string
+  receiver: string,
 ) => {
   const client = new SES({
     region: import.meta.env.VITE_AWS_REGION,

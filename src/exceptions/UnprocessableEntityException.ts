@@ -6,7 +6,7 @@ class UnprocessableEntityException extends HttpException {
     super(
       statusCodes.UNPROCESSABLE_ENTITY,
       msg || "Unprocessable entity",
-      code
+      code,
     );
   }
 }

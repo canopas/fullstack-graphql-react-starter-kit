@@ -1,6 +1,10 @@
 import { useMutation, useQuery } from "@apollo/client";
 import { GET_USERS } from "../../graphQL/queries.jsx";
-import { DELETE_USER, UPDATE_USER } from "../../graphQL/mutations.jsx";
+import {
+  DELETE_USER,
+  SET_BUSINESS_DETAILS,
+  UPDATE_USER,
+} from "../../graphQL/mutations.jsx";
 import DefaultLayout from "../../layout/DefaultLayout.jsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -30,6 +34,7 @@ const Users = () => {
   const [modalTitle, setModalTitle] = useState("");
   const [destoryUser] = useMutation(DELETE_USER);
   const [updateUser] = useMutation(UPDATE_USER);
+  const [setBusinessDetails] = useMutation(SET_BUSINESS_DETAILS);
   const { data, refetch }: any = useQuery(GET_USERS);
   var users: any = data ? data.users : [];
 
@@ -71,12 +76,12 @@ const Users = () => {
         setErrorAlert(true);
         setModalTitle("Error");
         setModalContent(
-          "Error deleting item: " + error.message ? error.message : ""
+          "Error deleting item: " + error.message ? error.message : "",
         );
       });
   };
 
-  const sendMail = async (user: any, bStatus: number) => {
+  const sendMail = async (user: any, bStatus: number, linkId: string) => {
     if (
       !user.username ||
       user.username == "" ||
@@ -94,13 +99,14 @@ const Users = () => {
         username={user.username}
         password={user.password}
         mailStatus={bStatus}
-      />
+        linkId={linkId}
+      />,
     );
 
     sendSESMail(
       emailHtml,
       "Omnidashboard: Business request status",
-      user.email
+      user.email,
     );
 
     await updateUser({
@@ -114,11 +120,17 @@ const Users = () => {
       },
     });
 
+    await setBusinessDetails({
+      variables: {
+        businessId: user.business.link_id,
+      },
+    });
+
     setSucessAlert(true);
     setModalTitle("Success");
     setModalContent(
       (bStatus == status.APPROVED ? "Approval" : "Rejection") +
-        " mail sent successfully"
+        " mail sent successfully",
     );
   };
 
@@ -200,20 +212,32 @@ const Users = () => {
                       <FontAwesomeIcon
                         className={` h-7  ${
                           user.business.status == status.APPROVED
-                            ? "pointer-events-none text-success"
+                            ? "cursor-not-allowed	text-success"
                             : ""
                         }`}
                         icon={faSquareCheck}
-                        onClick={() => sendMail(user, status.APPROVED)}
+                        onClick={() =>
+                          user.business.status !== status.APPROVED
+                            ? sendMail(
+                                user,
+                                status.APPROVED,
+                                user.business.link_id,
+                              )
+                            : ""
+                        }
                       />
                       <FontAwesomeIcon
                         className={` h-7 ${
                           user.business.status == status.REJECTED
-                            ? "pointer-events-none text-danger"
+                            ? "cursor-not-allowed text-danger"
                             : ""
                         }`}
                         icon={faXmarkSquare}
-                        onClick={() => sendMail(user, status.REJECTED)}
+                        onClick={() =>
+                          user.business.status !== status.REJECTED
+                            ? sendMail(user, status.REJECTED, "")
+                            : ""
+                        }
                       />
                     </div>
 

@@ -46,4 +46,10 @@ const UPDATE_USER = gql`
   }
 `;
 
-export { REGISTRATION, LOGIN, DELETE_USER, UPDATE_USER };
+const SET_BUSINESS_DETAILS = gql`
+  mutation setBusinessDetails($businessId: String!) {
+    setBusinessDetails(businessId: $businessId)
+  }
+`;
+
+export { REGISTRATION, LOGIN, DELETE_USER, UPDATE_USER, SET_BUSINESS_DETAILS };

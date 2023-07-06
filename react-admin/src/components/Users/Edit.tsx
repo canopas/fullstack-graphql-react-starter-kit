@@ -164,7 +164,7 @@ const UserEdit = () => {
                     setEmailError(
                       !validEmail(formState.email)
                         ? "Please enter valid email"
-                        : ""
+                        : "",
                     )
                   }
                   className="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-desaturatedBlue dark:bg-darkDesaturatedBlue dark:focus:border-primary"
@@ -194,7 +194,7 @@ const UserEdit = () => {
                     setPhoneError(
                       !validPhone(formState.phone)
                         ? "Please enter valid phone number"
-                        : ""
+                        : "",
                     )
                   }
                   className="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-desaturatedBlue dark:bg-darkDesaturatedBlue dark:focus:border-primary"

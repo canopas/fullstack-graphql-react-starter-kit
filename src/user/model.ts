@@ -110,7 +110,7 @@ User.init(
   {
     sequelize,
     modelName: "users",
-  }
+  },
 );
 
 User.hasOne(Business, { foreignKey: "user_id", as: "business" });
