@@ -20,6 +20,32 @@ class BusinessUser extends Model {
   public password?: string;
 }
 
+@InputType()
+export class LoginInput {
+  @Field()
+  username!: string;
+  @Field()
+  businessId!: string;
+  @Field()
+  password!: string;
+}
+
+@InputType()
+export class BusinessUserInput {
+  @Field({ nullable: true })
+  name?: string;
+  @Field({ nullable: true })
+  email?: string;
+  @Field({ nullable: true })
+  role_id?: number;
+  @Field({ nullable: true })
+  business_id?: string;
+  @Field({ nullable: true })
+  username?: string;
+  @Field({ nullable: true })
+  password?: string;
+}
+
 BusinessUser.init(
   {
     id: {

@@ -21,7 +21,7 @@ export default function Registration() {
   const [emailError, setEmailError] = useState("");
   const [phoneError, setPhoneError] = useState("");
 
-  const [createBusinessUser] = useMutation(CREATE_BUSINESS_MUTATION);
+  const [createUser] = useMutation(CREATE_BUSINESS_MUTATION);
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
@@ -29,7 +29,7 @@ export default function Registration() {
       return;
     }
     try {
-      await createBusinessUser({
+      await createUser({
         variables: {
           data: {
             name: formState.name,

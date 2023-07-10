@@ -8,15 +8,18 @@ import { useEffect, useState } from "react";
 import { UPDATE_USER } from "../../graphQL/mutations";
 import { validEmail, validPhone } from "../../config/utils";
 import ErrorAlert from "../Alerts/Error";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
 const UserEdit = () => {
-  var { id } = useParams();
+  let { id } = useParams();
   const navigate = useNavigate();
   const [modalVisible, setModalVisible] = useState(false);
   const [modalContent, setModalContent] = useState("");
   const [modalTitle, setModalTitle] = useState("");
   const [emailError, setEmailError] = useState("");
   const [phoneError, setPhoneError] = useState("");
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [formState, setFormState] = useState({
     name: "",
     email: "",
@@ -37,10 +40,14 @@ const UserEdit = () => {
     variables: { id },
   });
 
+  function togglePasswordVisibility() {
+    setIsPasswordVisible((prevState) => !prevState);
+  }
+
   useEffect(() => {
     if (data) {
       const u = data.user;
-      var user = {
+      let user = {
         name: u.name,
         email: u.email,
         phone: u.phone,
@@ -230,18 +237,25 @@ const UserEdit = () => {
                 <label className="mb-2.5 block text-black dark:text-white">
                   Password
                 </label>
-                <input
-                  type="password"
-                  placeholder="Enter password"
-                  value={formState.password}
-                  onChange={(e) =>
-                    setFormState({
-                      ...formState,
-                      password: e.target.value,
-                    })
-                  }
-                  className="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-desaturatedBlue dark:bg-darkDesaturatedBlue dark:focus:border-primary"
-                />
+                <div className="relative">
+                  <input
+                    type="password"
+                    placeholder="Enter password"
+                    value={formState.password}
+                    onChange={(e) =>
+                      setFormState({
+                        ...formState,
+                        password: e.target.value,
+                      })
+                    }
+                    className="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-desaturatedBlue dark:bg-darkDesaturatedBlue dark:focus:border-primary"
+                  />
+                  <FontAwesomeIcon
+                    className="text-gray-600 absolute inset-y-0 right-0 flex h-full w-[25px] items-center px-4"
+                    icon={isPasswordVisible ? faEyeSlash : faEye}
+                    onClick={togglePasswordVisibility}
+                  />
+                </div>
               </div>
             </div>
 

@@ -106,10 +106,10 @@ describe("UserResolver", () => {
     });
   });
 
-  describe("createBusinessUser", () => {
+  describe("createUser", () => {
     it("should handle bad request error for email during user creation", async () => {
       try {
-        await userResolver.createBusinessUser(input);
+        await userResolver.createUser(input);
       } catch (error: any) {
         expect(error).toBeInstanceOf(BadRequestException);
         expect(error.message).toBe("Email is required!");
@@ -119,7 +119,7 @@ describe("UserResolver", () => {
     it("should handle bad request error during user creation", async () => {
       try {
         input.email = "user1@example.com";
-        await userResolver.createBusinessUser(input);
+        await userResolver.createUser(input);
       } catch (error: any) {
         expect(error).toBeInstanceOf(BadRequestException);
         expect(error.message).toBe("Business details are required!");
@@ -135,7 +135,7 @@ describe("UserResolver", () => {
 
       try {
         input.business = businessInput;
-        await userResolver.createBusinessUser(input);
+        await userResolver.createUser(input);
       } catch (error: any) {
         expect(error).toBeInstanceOf(ServerErrorException);
         expect(error.message).toBe("An error occurred at server");
@@ -160,7 +160,7 @@ describe("UserResolver", () => {
           business_type_id: 1,
         });
 
-      const result = await userResolver.createBusinessUser(input);
+      const result = await userResolver.createUser(input);
 
       expect(result).toEqual({
         id: 1,

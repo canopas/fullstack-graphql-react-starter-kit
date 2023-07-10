@@ -1,13 +1,27 @@
 import { gql } from "@apollo/client";
 
-const GET_BUSINESS_USERS = gql`
+const GET_USERS = gql`
   query businessUsers($businessId: String!) {
     businessUsers(businessId: $businessId) {
       id
       name
       email
+      username
     }
   }
 `;
 
-export { GET_BUSINESS_USERS };
+const GET_USER = gql`
+  query BusinessUser($id: String!) {
+    businessUser(id: $id) {
+      id
+      name
+      email
+      role_id
+      username
+      password
+    }
+  }
+`;
+
+export { GET_USERS, GET_USER };

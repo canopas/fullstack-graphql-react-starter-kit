@@ -8,9 +8,6 @@
   }
 }
 
-@layer components {
-}
-
 @layer utilities {
   /* Chrome, Safari and Opera */
   .no-scrollbar::-webkit-scrollbar {

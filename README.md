@@ -4,14 +4,21 @@ This is type of business management project built with GraphQL and React.js.
 
 It can be considered as boilerplate web application contains GraphQL, Typescript, React.js, Apollo, ExpressJS and Mysql database.
 
+## Project structure
+
+Project has 4 sub-projects to handle all the functionalities of the project.
+
+- Backend - Contains GraphQL APIs
+- React Admin - Admin panel to manage data
+- React Frontend - Frontend to register the business
+- Business dashboard - Dashboard(Space) for individual business
+
 ## Requirements
 
 - Node v20.3.1
 - Typescript
 
-## Run the server
-
-### Node Backend
+## Install dependencies
 
 - Install dependencies
 
@@ -24,6 +31,10 @@ It can be considered as boilerplate web application contains GraphQL, Typescript
   ```
   yarn add <dependency name>
   ```
+
+## Run the server
+
+### Node Backend
 
 - Start Node Server
 
@@ -39,18 +50,12 @@ It can be considered as boilerplate web application contains GraphQL, Typescript
 
   You should find GraphQL API running at `http://localhost:4000/graphql`.
 
-### React Frontend
+### React Frontend, React admin and Business dashboard
 
-- Install dependencies
-
-  ```
-  yarn install
-  ```
-
-- Add new dependency
+- go to the choosen directory using below command,
 
   ```
-  yarn add <dependency name>
+  cd <directory-name>
   ```
 
 - Build project
@@ -65,35 +70,7 @@ It can be considered as boilerplate web application contains GraphQL, Typescript
   yarn dev
   ```
 
-  Server will start at `http://localhost:3000`.
-
-### React Admin panel
-
-- Install dependencies
-
-  ```
-  yarn install
-  ```
-
-- Add new dependency
-
-  ```
-  yarn add <dependency name>
-  ```
-
-- Build project
-
-  ```
-  yarn build
-  ```
-
-- Start development Server
-
-  ```
-  yarn dev
-  ```
-
-  Server will start at `http://localhost:5137`.
+  Server will start at `http://localhost:<port>`.
 
 ## To enable pre-commit hook
 

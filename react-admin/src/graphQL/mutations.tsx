@@ -21,7 +21,7 @@ const LOGIN = gql`
 
 const DELETE_USER = gql`
   mutation DeleteUser($id: Float!) {
-    deleteUser(data: $id)
+    deleteUser(id: $id)
   }
 `;
 
