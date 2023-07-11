@@ -28,7 +28,7 @@ export function handleErrors(error: any) {
 
 export const generateRandomString = (length: number) => {
   const chars =
-    "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890@#$%^&*?!~";
+    "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890@#$!";
   const randomArray = Array.from(
     { length: length },
     (v, k) => chars[Math.floor(Math.random() * chars.length)],

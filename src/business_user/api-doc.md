@@ -31,7 +31,7 @@
 ```json
 {
   "data": {
-    "createBusinessUser": true
+    "setBusinessDetails": true
   }
 }
 ```
@@ -79,6 +79,154 @@
         "email": "user2@example.com"
       }
     ]
+  }
+}
+```
+
+</details>
+
+## 3. Create user
+
+<details>
+<summary>Create user</summary>
+<br>
+
+## Create user
+
+- **Description** : This API is used to create business user.
+- **Request type** : mutation
+- **Request body sample**:
+
+  - **Request body**
+
+    ```
+    mutation CreateBusinessUser($data: BusinessUserInput!) {
+      createBusinessUser(data: $data) {
+        id
+        name
+        email
+        username
+      }
+    }
+    ```
+
+  - **Add variables like below**
+
+    ```
+    {
+      "data": {
+          "name" : "name",
+          "email": "email",
+          "username":"username"
+          "password": "password"
+      },
+    }
+    ```
+
+- **Response**:
+
+```json
+{
+  "data": {
+    "createBusinessUser": {
+      "id": 1,
+      "name": "test",
+      "email": "test@gmail.com",
+      "username": "username"
+    }
+  }
+}
+```
+
+</details>
+
+## 4. Update user
+
+<details>
+<summary>Update user</summary>
+<br>
+
+## Update user
+
+- **Description** : This API is used to update business user.
+- **Request type** : mutation
+- **Request body sample**:
+
+  - **Request body**
+
+    ```
+    mutation UpdateBusinessUser($id: String!, $data: BusinessUserInput!) {
+      updateBusinessUser(id: $id, data: $data) {
+        id
+        name
+        email
+        role_id
+        username
+        password
+      }
+    }
+    ```
+
+  - **Add variables like below**
+
+    ```
+    {
+      "id": "1",
+      "data": {
+        "email": "user2@example.com",
+      },
+    }
+    ```
+
+- **Response**:
+
+```json
+{
+  "data": {
+    "updateBusinessUser": {
+      "name": "User1",
+      "email": "user2@example.com"
+    }
+  }
+}
+```
+
+</details>
+
+## 5. Delete user
+
+<details>
+<summary>Delete user</summary>
+<br>
+
+## Delete user
+
+- **Description** : This API is used to delete business user.
+- **Request type** : mutation
+- **Request body sample**:
+
+  - **Request body**
+
+    ```
+    mutation DeleteBusinessUser($id: Float!) {
+      deleteBusinessUser(id: $id)
+    }
+    ```
+
+  - **Add variables like below**
+
+    ```
+    {
+      "id": "1",
+    }
+    ```
+
+- **Response**:
+
+```json
+{
+  "data": {
+    "deleteBusinessUser": true
   }
 }
 ```

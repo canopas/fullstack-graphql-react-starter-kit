@@ -34,7 +34,7 @@ export class UserResolver {
   }
 
   @Mutation(() => User)
-  async createBusinessUser(@Arg("data") input: UserInput): Promise<User> {
+  async createUser(@Arg("data") input: UserInput): Promise<User> {
     if (!input.email || input.email == "") {
       throw new BadRequestException(
         "Email is required!",
@@ -42,7 +42,7 @@ export class UserResolver {
       );
     }
 
-    if (!input.business || !input.business.name || input.business.name == "") {
+    if (!input.business?.name || input.business?.name == "") {
       throw new BadRequestException(
         "Business details are required!",
         ApolloServerErrorCode.BAD_REQUEST,
@@ -125,7 +125,7 @@ export class UserResolver {
   }
 
   @Mutation(() => Boolean)
-  async deleteUser(@Arg("data") id: Number): Promise<Boolean> {
+  async deleteUser(@Arg("id") id: number): Promise<boolean> {
     let count = 0;
     try {
       count = await User.destroy({ where: { id } });

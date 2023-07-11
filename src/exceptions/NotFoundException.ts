@@ -3,7 +3,7 @@ import { statusCodes } from "../config/const.config";
 
 class NotFoundException extends HttpException {
   constructor(msg?: string, code?: string) {
-    super(statusCodes.NOT_FOUND, msg || "Not found", code);
+    super(statusCodes.NOT_FOUND, msg ?? "Not found", code);
   }
 }
 

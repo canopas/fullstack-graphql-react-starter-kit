@@ -3,7 +3,7 @@ import { statusCodes } from "../config/const.config";
 
 class ServerErrorException extends HttpException {
   constructor(msg?: string, code?: string) {
-    super(statusCodes.SERVER_ERROR, msg || "Internal server error", code);
+    super(statusCodes.SERVER_ERROR, msg ?? "Internal server error", code);
   }
 }
 

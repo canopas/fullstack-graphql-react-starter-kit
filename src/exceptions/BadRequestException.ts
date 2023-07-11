@@ -3,7 +3,7 @@ import HttpException from "./HttpException";
 
 class BadRequestException extends HttpException {
   constructor(msg?: string, code?: string) {
-    super(statusCodes.BAD_REQUEST, msg || "Bad request", code);
+    super(statusCodes.BAD_REQUEST, msg ?? "Bad request", code);
   }
 }
 

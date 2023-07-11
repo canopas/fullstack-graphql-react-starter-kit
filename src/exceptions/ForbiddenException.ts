@@ -3,7 +3,7 @@ import { statusCodes } from "../config/const.config";
 
 class ForbiddenException extends HttpException {
   constructor(msg?: string, code?: string) {
-    super(statusCodes.FORBIDDEN, msg || "Forbidden", code);
+    super(statusCodes.FORBIDDEN, msg ?? "Forbidden", code);
   }
 }
 

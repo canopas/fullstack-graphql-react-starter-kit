@@ -5,7 +5,7 @@ class UnauthorizedException extends HttpException {
   constructor(msg?: string, code?: string) {
     super(
       statusCodes.UNAUTHORIZED,
-      msg || "User is not authorized",
+      msg ?? "User is not authorized",
       errorCodes.UNAUTHORIZED_ERROR,
     );
   }

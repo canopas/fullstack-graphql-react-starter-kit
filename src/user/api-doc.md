@@ -21,8 +21,8 @@
   - **Request body**
 
     ```
-    mutation CreateBusinessUser($data: UserInput!) {
-      createBusinessUser(data: $data) {
+    mutation CreateUser($data: UserInput!) {
+      createUser(data: $data) {
           name
           email
           phone
@@ -50,7 +50,7 @@
 ```json
 {
   "data": {
-    "createBusinessUser": {
+    "createUser": {
       "name": "sumi",
       "email": "sumi@gmail.com",
       "phone": "9999999999",
@@ -256,7 +256,7 @@
 
     ```
     mutation DeleteUser($id: Float!) {
-      deleteUser(data: $id)
+      deleteUser(id: $id)
     }
     ```
 

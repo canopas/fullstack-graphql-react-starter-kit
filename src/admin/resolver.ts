@@ -1,4 +1,4 @@
-import { Resolver, Mutation, Arg, Query } from "type-graphql";
+import { Resolver, Mutation, Arg } from "type-graphql";
 import Admin, { AdminInput } from "./model";
 import { roles, statusCodes } from "../config/const.config";
 import { handleErrors } from "../util/handlers.util";

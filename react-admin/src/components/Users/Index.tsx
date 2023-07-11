@@ -23,7 +23,8 @@ import { Link } from "react-router-dom";
 import { render } from "@react-email/render";
 import { Email } from "../Email/approval";
 import { sendSESMail } from "../../config/utils.js";
-import { status } from "../../config/const.js";
+import { messages, status } from "../../config/const.js";
+import bcrypt from "bcryptjs";
 
 library.add(faEdit, faTrash);
 
@@ -36,7 +37,7 @@ const Users = () => {
   const [updateUser] = useMutation(UPDATE_USER);
   const [setBusinessDetails] = useMutation(SET_BUSINESS_DETAILS);
   const { data, refetch }: any = useQuery(GET_USERS);
-  var users: any = data ? data.users : [];
+  let users: any = data ? data.users : [];
 
   const handleDelete = (id: number) => {
     confirmAlert({
@@ -103,35 +104,45 @@ const Users = () => {
       />,
     );
 
-    sendSESMail(
-      emailHtml,
-      "Omnidashboard: Business request status",
-      user.email,
-    );
-
-    await updateUser({
-      variables: {
-        id: user.id.toString(),
-        data: {
-          business: {
-            status: bStatus,
+    try {
+      await updateUser({
+        variables: {
+          id: user.id.toString(),
+          data: {
+            password: bcrypt.hashSync(
+              user.password,
+              import.meta.env.VITE_PASSWORD_SALT,
+            ),
+            business: {
+              status: bStatus,
+            },
           },
         },
-      },
-    });
+      });
 
-    await setBusinessDetails({
-      variables: {
-        businessId: user.business.link_id,
-      },
-    });
+      await setBusinessDetails({
+        variables: {
+          businessId: user.business.link_id,
+        },
+      });
 
-    setSucessAlert(true);
-    setModalTitle("Success");
-    setModalContent(
-      (bStatus == status.APPROVED ? "Approval" : "Rejection") +
-        " mail sent successfully",
-    );
+      sendSESMail(
+        emailHtml,
+        "Omnidashboard: Business request status",
+        user.email,
+      );
+
+      setSucessAlert(true);
+      setModalTitle("Success");
+      setModalContent(
+        (bStatus == status.APPROVED ? "Approval" : "Rejection") +
+          " mail sent successfully",
+      );
+    } catch (error: any) {
+      setErrorAlert(true);
+      setModalTitle("Error");
+      setModalContent(error.message || messages.ERROR);
+    }
   };
 
   return (
