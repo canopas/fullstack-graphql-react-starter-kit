@@ -14,5 +14,6 @@ jobs:
 
       - name: Run API test
         run: |
+          cd backend
           yarn install
           yarn test
