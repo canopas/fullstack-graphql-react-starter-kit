@@ -1,7 +1,7 @@
 import { DataTypes, Model } from "sequelize";
 import sequelize from "../config/db.config";
 import { Field, ObjectType, InputType } from "type-graphql";
-import Business from "../business/model";
+import Business, { BusinessInput } from "../business/model";
 
 @ObjectType()
 class User extends Model {
@@ -25,24 +25,6 @@ class User extends Model {
   public password?: string;
   @Field({ nullable: true })
   public business?: Business;
-}
-
-@InputType()
-export class BusinessInput {
-  @Field({ nullable: true })
-  name?: string;
-  @Field({ nullable: true })
-  description?: string;
-  @Field({ nullable: true })
-  address?: string;
-  @Field({ nullable: true })
-  city?: string;
-  @Field({ nullable: true })
-  business_type_id?: number;
-  @Field({ nullable: true })
-  user_id?: number;
-  @Field({ nullable: true })
-  status?: number;
 }
 
 @InputType()

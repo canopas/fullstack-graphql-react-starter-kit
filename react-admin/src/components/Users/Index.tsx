@@ -29,7 +29,7 @@ import bcrypt from "bcryptjs";
 library.add(faEdit, faTrash);
 
 const Users = () => {
-  const [sucessAlert, setSucessAlert] = useState(false);
+  const [successAlert, setSuccessAlert] = useState(false);
   const [errorAlert, setErrorAlert] = useState(false);
   const [modalContent, setModalContent] = useState("");
   const [modalTitle, setModalTitle] = useState("");
@@ -132,7 +132,7 @@ const Users = () => {
         user.email,
       );
 
-      setSucessAlert(true);
+      setSuccessAlert(true);
       setModalTitle("Success");
       setModalContent(
         (bStatus == status.APPROVED ? "Approval" : "Rejection") +
@@ -190,9 +190,9 @@ const Users = () => {
           ) : (
             ""
           )}
-          {sucessAlert ? (
+          {successAlert ? (
             <SuccessAlert
-              visible={sucessAlert}
+              visible={successAlert}
               title={modalTitle}
               content={modalContent}
             />

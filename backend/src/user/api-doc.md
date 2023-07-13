@@ -1,9 +1,3 @@
-# Common Error Codes
-
-- **400** : Bad request - In case any required data is missing in request
-- **500** : Internal server error - Any unexpected error
-  <br><br>
-
 # API list
 
 ## 1. Create user and business

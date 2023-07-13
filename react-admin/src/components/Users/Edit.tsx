@@ -65,7 +65,11 @@ const UserEdit = () => {
   }, [data]);
 
   if (loading) return null;
-  if (error) console.log(`Error! ${error}`);
+  if (error) {
+    setModalVisible(true);
+    setModalTitle("Error");
+    setModalContent(error.message || messages.ERROR);
+  }
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
