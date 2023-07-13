@@ -8,6 +8,7 @@ import { ApolloServerErrorCode } from "@apollo/server/errors";
 import BadRequestException from "../exceptions/BadRequestException";
 import bcrypt from "bcryptjs";
 import dotenv from "dotenv";
+import NotFoundException from "../exceptions/NotFoundException";
 dotenv.config();
 
 @Resolver(() => BusinessUser)
@@ -177,6 +178,10 @@ export class BusinessUserResolver {
       });
     } catch (error: any) {
       handleErrors(error);
+    }
+
+    if (user == null) {
+      throw new NotFoundException();
     }
 
     return user;

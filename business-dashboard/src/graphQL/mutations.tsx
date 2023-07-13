@@ -41,4 +41,23 @@ const UPDATE_USER = gql`
   }
 `;
 
-export { LOGIN, CREATE_USER, DELETE_USER, UPDATE_USER };
+const UPDATE_BUSINESS_DETAILS = gql`
+  mutation UpdateBusinessDetails($linkId: String!, $data: BusinessInput!) {
+    updateBusinessDetails(linkId: $linkId, data: $data) {
+      id
+      name
+      description
+      address
+      city
+      business_type_id
+    }
+  }
+`;
+
+export {
+  LOGIN,
+  CREATE_USER,
+  DELETE_USER,
+  UPDATE_USER,
+  UPDATE_BUSINESS_DETAILS,
+};

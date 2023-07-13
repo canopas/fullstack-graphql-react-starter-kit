@@ -5,6 +5,7 @@ import User from "../../user/model";
 import UnauthorizedException from "../../exceptions/UnauthorizedException";
 import BadRequestException from "../../exceptions/BadRequestException";
 import { roles } from "../../config/const.config";
+import NotFoundException from "../../exceptions/NotFoundException";
 
 describe("UserResolver", () => {
   let userResolver: BusinessUserResolver;
@@ -88,6 +89,20 @@ describe("UserResolver", () => {
       } catch (error: any) {
         expect(error).toBeInstanceOf(ServerErrorException);
         expect(error.message).toBe("An error occurred at server");
+        expect(findMock).toHaveBeenCalledTimes(1);
+      }
+
+      findMock.mockRestore(); // Restore the original implementation
+    });
+
+    it("should handle not found while getting details", async () => {
+      const findMock = jest.spyOn(User, "findOne").mockResolvedValueOnce(null);
+
+      try {
+        await userResolver.findBusinessUser("dtvcxvdgr");
+      } catch (error: any) {
+        expect(error).toBeInstanceOf(NotFoundException);
+        expect(error.message).toBe("Not found");
         expect(findMock).toHaveBeenCalledTimes(1);
       }
 

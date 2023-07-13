@@ -9,11 +9,19 @@ import cors from "cors";
 import dotenv from "dotenv";
 import { statusCodes } from "./config/const.config";
 import { BusinessUserResolver } from "./business_user/resolver";
+import { BusinessResolver } from "./business/resolver";
+import { BusinessTypeResolver } from "./business_type/resolver";
 dotenv.config();
 
 async function main() {
   const schema = await buildSchema({
-    resolvers: [UserResolver, AdminResolver, BusinessUserResolver],
+    resolvers: [
+      UserResolver,
+      AdminResolver,
+      BusinessUserResolver,
+      BusinessResolver,
+      BusinessTypeResolver,
+    ],
     emitSchemaFile: true,
     validate: false,
   });

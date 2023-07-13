@@ -5,6 +5,7 @@ import { PrivateRoute } from "./pages/Authentication/PrivateRoute";
 import Users from "./components/Users";
 import UserEdit from "./components/Users/Edit";
 import UserCreate from "./components/Users/Create";
+import BusinessDetail from "./components/Business";
 
 function App() {
   const [loading, setLoading] = useState<boolean>(true);
@@ -47,6 +48,14 @@ function App() {
           element={
             <PrivateRoute>
               <UserEdit />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path={"/business-details"}
+          element={
+            <PrivateRoute>
+              <BusinessDetail />
             </PrivateRoute>
           }
         />

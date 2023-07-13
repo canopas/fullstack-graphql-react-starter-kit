@@ -1,6 +1,6 @@
 import { UserResolver } from "../resolver";
-import User, { BusinessInput, UserInput } from "../model";
-import Business from "../../business/model";
+import User, { UserInput } from "../model";
+import Business, { BusinessInput } from "../../business/model";
 import ServerErrorException from "../../exceptions/ServerErrorException";
 import BadRequestException from "../../exceptions/BadRequestException";
 

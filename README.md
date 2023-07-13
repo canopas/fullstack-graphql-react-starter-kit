@@ -1,8 +1,8 @@
-# omniDashboard
+<h1 align="center"><strong>Boilerplate Project with GraphQL, ReactJS, NodeJS, and MySQL</strong></h1>
 
-This is type of business management project built with GraphQL and React.js.
+This boilerplate project provides a solid foundation for developing web applications using GraphQL, ReactJS, NodeJS, and MySQL. With its intuitive architecture and powerful technologies, this project template empowers developers to quickly build scalable and efficient applications.
 
-It can be considered as boilerplate web application contains GraphQL, Typescript, React.js, Apollo, ExpressJS and Mysql database.
+This includes essential configurations, common components, and best practices to help you kickstart your development process. Whether you're a beginner or an experienced developer, this project template is designed to accelerate your workflow and enable you to focus on building innovative features.
 
 ## Project structure
 
@@ -77,6 +77,10 @@ Project has 4 sub-projects to handle all the functionalities of the project.
 ```
 git config core.hooksPath .githooks
 ```
+
+## API documentation
+
+- Find full API documentation [here](https://github.com/canopas/omniDashboard/blob/main/backend/README.md).
 
 ## Dependencies
 
