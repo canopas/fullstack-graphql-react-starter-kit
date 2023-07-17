@@ -11,6 +11,7 @@ import { statusCodes } from "./config/const.config";
 import { BusinessUserResolver } from "./business_user/resolver";
 import { BusinessResolver } from "./business/resolver";
 import { BusinessTypeResolver } from "./business_type/resolver";
+import { CategoryResolver } from "./category/resolver";
 dotenv.config();
 
 async function main() {
@@ -21,6 +22,7 @@ async function main() {
       BusinessUserResolver,
       BusinessResolver,
       BusinessTypeResolver,
+      CategoryResolver,
     ],
     emitSchemaFile: true,
     validate: false,

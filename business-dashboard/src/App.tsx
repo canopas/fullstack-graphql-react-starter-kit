@@ -5,6 +5,9 @@ import { PrivateRoute } from "./pages/Authentication/PrivateRoute";
 import Users from "./components/Users";
 import UserEdit from "./components/Users/Edit";
 import UserCreate from "./components/Users/Create";
+import Categories from "./components/Categories";
+import CategoryEdit from "./components/Categories/Edit";
+import CategoryCreate from "./components/Categories/Create";
 import BusinessDetail from "./components/Business";
 
 function App() {
@@ -48,6 +51,30 @@ function App() {
           element={
             <PrivateRoute>
               <UserEdit />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path={"/categories"}
+          element={
+            <PrivateRoute>
+              <Categories />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path={"/categories/create"}
+          element={
+            <PrivateRoute>
+              <CategoryCreate />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path={"/categories/edit/:id"}
+          element={
+            <PrivateRoute>
+              <CategoryEdit />
             </PrivateRoute>
           }
         />

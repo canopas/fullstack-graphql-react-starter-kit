@@ -2,8 +2,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useRef, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import {
+  faFileCirclePlus,
   faPenClip,
-  faSquare,
   faUserGroup,
 } from "@fortawesome/free-solid-svg-icons";
 
@@ -102,6 +102,18 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                 >
                   <FontAwesomeIcon icon={faPenClip} />
                   Business details
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/categories"
+                  className={`group relative flex items-center gap-2.5 rounded-sm px-4 py-2 font-medium text-lightGrayBlue duration-300 ease-in-out hover:bg-graydark dark:hover:bg-darkGrayBlue ${
+                    pathname.includes("profile") &&
+                    "bg-graydark dark:bg-darkGrayBlue"
+                  }`}
+                >
+                  <FontAwesomeIcon icon={faFileCirclePlus} />
+                  Categories
                 </NavLink>
               </li>
               {/* <!-- Menu Item Dashboard --> */}

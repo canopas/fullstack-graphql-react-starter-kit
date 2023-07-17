@@ -42,8 +42,8 @@ const UPDATE_USER = gql`
 `;
 
 const UPDATE_BUSINESS_DETAILS = gql`
-  mutation UpdateBusinessDetails($linkId: String!, $data: BusinessInput!) {
-    updateBusinessDetails(linkId: $linkId, data: $data) {
+  mutation UpdateBusinessDetails($businessId: String!, $data: BusinessInput!) {
+    updateBusinessDetails(businessId: $businessId, data: $data) {
       id
       name
       description
@@ -54,10 +54,39 @@ const UPDATE_BUSINESS_DETAILS = gql`
   }
 `;
 
+const CREATE_CATEGORY = gql`
+  mutation CreateCategory($data: CategoryInput!) {
+    createCategory(data: $data) {
+      id
+      name
+      parent_id
+    }
+  }
+`;
+
+const UPDATE_CATEGORY = gql`
+  mutation UpdateCategory($id: String!, $data: CategoryInput!) {
+    updateCategory(id: $id, data: $data) {
+      id
+      name
+      parent_id
+    }
+  }
+`;
+
+const DELETE_CATEGORY = gql`
+  mutation DeleteCategory($id: Float!) {
+    deleteCategory(id: $id)
+  }
+`;
+
 export {
   LOGIN,
   CREATE_USER,
   DELETE_USER,
   UPDATE_USER,
   UPDATE_BUSINESS_DETAILS,
+  CREATE_CATEGORY,
+  UPDATE_CATEGORY,
+  DELETE_CATEGORY,
 };

@@ -13,6 +13,7 @@
 - [Business](https://github.com/canopas/omniDashboard/blob/main/backend/src/business/api-doc.md)
 - [Business Types](https://github.com/canopas/omniDashboard/blob/main/backend/src/business_type/api-doc.md)
 - [Business Users](https://github.com/canopas/omniDashboard/blob/main/backend/src/business_user/api-doc.md)
+- [Categories](https://github.com/canopas/omniDashboard/blob/main/backend/src/category/api-doc.md)
 
 ## API used for admin panel
 

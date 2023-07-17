@@ -15,8 +15,8 @@
   - **Request body**
 
     ```
-    query BusinessDetails($linkId: String!) {
-      businessDetails(linkId: $linkId) {
+    query BusinessDetails($businessId: String!) {
+      businessDetails(businessId: $businessId) {
         id
         name
         description
@@ -77,7 +77,7 @@
 
     ```
     {
-      "linkId": "business_link_id",
+      "businessId": "business_link_id",
       "data": {
         "description" : "Test business details"
       },

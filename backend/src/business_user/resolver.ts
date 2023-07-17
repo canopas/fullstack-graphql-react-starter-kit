@@ -19,7 +19,6 @@ export class BusinessUserResolver {
   ): Promise<[BusinessUser]> {
     let users: any;
     try {
-      // get admins
       users = await BusinessUser.findAll({
         where: { business_id: businessId },
       });

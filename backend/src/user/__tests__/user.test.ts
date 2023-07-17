@@ -61,7 +61,7 @@ describe("UserResolver", () => {
       findMock.mockRestore(); // Restore the original implementation
     });
 
-    it("should create a user and return the created user", async () => {
+    it("should return users", async () => {
       const findMock = jest.spyOn(User, "findAll").mockResolvedValueOnce(users);
 
       const result = await userResolver.users();

@@ -56,7 +56,6 @@ const Users = () => {
         },
       ],
     });
-    return;
   };
 
   const deleteUser = (id: number) => {
@@ -82,7 +81,7 @@ const Users = () => {
       });
   };
 
-  const sendMail = async (user: any, bStatus: number, linkId: string) => {
+  const sendMail = async (user: any, bStatus: number, businessId: string) => {
     if (
       !user.username ||
       user.username == "" ||
@@ -100,7 +99,7 @@ const Users = () => {
         username={user.username}
         password={user.password}
         mailStatus={bStatus}
-        linkId={linkId}
+        businessId={businessId}
       />,
     );
 

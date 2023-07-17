@@ -24,14 +24,14 @@ const BusinessDetail = () => {
   });
 
   // variables
-  const linkId = localStorage.getItem("businessId");
+  const businessId = localStorage.getItem("businessId");
 
   //Query and mutations
   const [updateDetails] = useMutation(UPDATE_BUSINESS_DETAILS);
   const { loading, error, data }: any = useQuery(
     GET_BUSINESS_DETAILS_AND_TYPES,
     {
-      variables: { linkId: linkId },
+      variables: { businessId: businessId },
     },
   );
   useEffect(() => {
@@ -63,7 +63,7 @@ const BusinessDetail = () => {
     try {
       await updateDetails({
         variables: {
-          linkId: linkId,
+          businessId: businessId,
           data: {
             name: formState.name,
             description: formState.description,
