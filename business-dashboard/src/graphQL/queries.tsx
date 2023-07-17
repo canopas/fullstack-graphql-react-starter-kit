@@ -25,8 +25,8 @@ const GET_USER = gql`
 `;
 
 const GET_BUSINESS_DETAILS_AND_TYPES = gql`
-  query ($linkId: String!) {
-    businessDetails(linkId: $linkId) {
+  query ($businessId: String!) {
+    businessDetails(businessId: $businessId) {
       id
       name
       description
@@ -41,4 +41,30 @@ const GET_BUSINESS_DETAILS_AND_TYPES = gql`
   }
 `;
 
-export { GET_USERS, GET_USER, GET_BUSINESS_DETAILS_AND_TYPES };
+const GET_CATEGORIES = gql`
+  query Categories($businessId: String!) {
+    categories(businessId: $businessId) {
+      id
+      name
+      parent_id
+    }
+  }
+`;
+
+const GET_CATEGORY = gql`
+  query Category($id: String!) {
+    category(id: $id) {
+      id
+      name
+      parent_id
+    }
+  }
+`;
+
+export {
+  GET_USERS,
+  GET_USER,
+  GET_BUSINESS_DETAILS_AND_TYPES,
+  GET_CATEGORIES,
+  GET_CATEGORY,
+};

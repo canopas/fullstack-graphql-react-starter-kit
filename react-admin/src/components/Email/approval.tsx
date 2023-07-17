@@ -6,14 +6,14 @@ interface EmailProps {
   username: string;
   password: string;
   mailStatus: number;
-  linkId: string;
+  businessId: string;
 }
 
 export const Email: React.FC<Readonly<EmailProps>> = ({
   username,
   password,
   mailStatus,
-  linkId,
+  businessId,
 }) => {
   return (
     <Html lang="en">
@@ -32,7 +32,7 @@ export const Email: React.FC<Readonly<EmailProps>> = ({
             interest and trust in our application. <br />
             <br />
             You can access your business on <br />
-            {import.meta.env.VITE_BUSINESS_DASHBOARD_URL + "/" + linkId}
+            {import.meta.env.VITE_BUSINESS_DASHBOARD_URL + "/" + businessId}
             <br />
             Here are the credentials for you to get started:
           </p>

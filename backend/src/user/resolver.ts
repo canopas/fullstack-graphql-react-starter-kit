@@ -6,6 +6,7 @@ import { Op } from "sequelize";
 import BadRequestException from "../exceptions/BadRequestException";
 import { ApolloServerErrorCode } from "@apollo/server/errors";
 import { generateRandomString, handleErrors } from "../util/handlers.util";
+import NotFoundException from "../exceptions/NotFoundException";
 
 @Resolver(() => User)
 export class UserResolver {
@@ -149,6 +150,10 @@ export class UserResolver {
       });
     } catch (error: any) {
       handleErrors(error);
+    }
+
+    if (user == null) {
+      throw new NotFoundException("User not found for given Id");
     }
 
     return user;

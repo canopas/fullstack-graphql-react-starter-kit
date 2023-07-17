@@ -133,16 +133,9 @@
           id
           name
           email
-          phone
           city
-          role_id
-          gender
-          username
-          password
           business {
             name
-            description
-            address
           }
         }
       }
@@ -161,24 +154,15 @@
 ```json
 {
   "data": {
-    "users": [
-      {
-        "id": 1,
-        "name": "User1",
-        "email": "user1@example.com",
-        "city": "city",
-        "business": {
-          "name": "MyBusiness"
-        }
-      },
-      {
-        "id": 2,
-        "name": "User2",
-        "email": "user2@example.com",
-        "city": "city",
-        "business": null
+    "user": {
+      "id": 1,
+      "name": "User1",
+      "email": "user1@example.com",
+      "city": "city",
+      "business": {
+        "name": "MyBusiness"
       }
-    ]
+    }
   }
 }
 ```

@@ -6,13 +6,15 @@ import NotFoundException from "../exceptions/NotFoundException";
 @Resolver(() => Business)
 export class BusinessResolver {
   @Query(() => Business)
-  async businessDetails(@Arg("linkId") linkId: string): Promise<Business> {
-    return this.findBusinessByLinkID(linkId);
+  async businessDetails(
+    @Arg("businessId") businessId: string,
+  ): Promise<Business> {
+    return this.findBusinessById(businessId);
   }
 
   @Mutation(() => Business)
   async updateBusinessDetails(
-    @Arg("linkId") linkId: string,
+    @Arg("businessId") businessId: string,
     @Arg("data") input: BusinessInput,
   ): Promise<Business | null> {
     try {
@@ -26,21 +28,21 @@ export class BusinessResolver {
           business_type_id: input.business_type_id,
         },
         {
-          where: { link_id: linkId },
+          where: { link_id: businessId },
         },
       );
     } catch (error: any) {
       handleErrors(error);
     }
 
-    return this.findBusinessByLinkID(linkId);
+    return this.findBusinessById(businessId);
   }
 
-  async findBusinessByLinkID(linkId: string): Promise<Business> {
+  async findBusinessById(businessId: string): Promise<Business> {
     let business: any;
     try {
       business = await Business.findOne({
-        where: { link_id: linkId },
+        where: { link_id: businessId },
       });
     } catch (error: any) {
       handleErrors(error);
