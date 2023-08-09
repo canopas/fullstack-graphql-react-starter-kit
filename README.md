@@ -96,6 +96,7 @@ git config core.hooksPath .githooks
 ### Frontend
 
 - [react](https://react.dev/learn)
+- [react-redux](https://react-redux.js.org/)
 - [@headlessui/react](https://headlessui.com/)
 - [@apollo/client](https://www.apollographql.com/docs/react/)
 - [graphql-js](https://github.com/graphql/graphql-js)
