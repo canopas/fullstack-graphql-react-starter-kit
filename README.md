@@ -110,4 +110,4 @@ git config core.hooksPath .githooks
 
 ## LICENSE
 
-Omnidashboard is released under the [MIT](https://github.com/canopas/omnidashboard/blob/main/LICENSE.md).
+This repository is released under the [MIT](https://github.com/canopas/omnidashboard/blob/main/LICENSE.md).
