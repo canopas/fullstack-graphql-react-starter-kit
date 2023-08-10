@@ -10,10 +10,12 @@ import "react-confirm-alert/src/react-confirm-alert.css";
 import ErrorAlert from "../Alerts/Error.jsx";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import useLocalStorage from "../../hooks/useLocalStorage.js";
 
 library.add(faEdit, faTrash);
 
 const Users = () => {
+  const [loggedUser]: any = useLocalStorage("user", "");
   const [errorAlert, setErrorAlert] = useState(false);
   const [modalContent, setModalContent] = useState("");
   const [modalTitle, setModalTitle] = useState("");
@@ -137,15 +139,19 @@ const Users = () => {
                       </p>
                     </div>
 
-                    <div className="flex items-center justify-center gap-4 p-2.5 xl:p-5">
-                      <Link to={"/user/edit/" + user.id}>
-                        <FontAwesomeIcon icon={faEdit} />
-                      </Link>
-                      <FontAwesomeIcon
-                        icon={faTrash}
-                        onClick={() => handleDelete(user.id)}
-                      />
-                    </div>
+                    {user.id != loggedUser.id ? (
+                      <div className="flex items-center justify-center gap-4 p-2.5 xl:p-5">
+                        <Link to={"/user/edit/" + user.id}>
+                          <FontAwesomeIcon icon={faEdit} />
+                        </Link>
+                        <FontAwesomeIcon
+                          icon={faTrash}
+                          onClick={() => handleDelete(user.id)}
+                        />
+                      </div>
+                    ) : (
+                      ""
+                    )}
                   </div>
                 );
               })

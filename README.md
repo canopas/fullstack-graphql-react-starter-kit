@@ -11,7 +11,7 @@ Project has 4 sub-projects to handle all the functionalities of the project.
 - [Backend](https://github.com/canopas/omniDashboard/tree/main/backend) - Contains GraphQL APIs
 - [React Admin](https://github.com/canopas/omniDashboard/tree/main/react-admin) - Admin panel to manage data
 - [React Frontend](https://github.com/canopas/omniDashboard/tree/main/react-frontend) - Frontend to register the business
-- [Business dashboard](https://github.com/canopas/omniDashboard/tree/main/business-dashboard) - Dashboard(Space) for individual business
+- [Business dashboard - Progressive Web App (PWA)](https://github.com/canopas/omniDashboard/tree/main/business-dashboard) - Dashboard(Space) for individual business
 
 ## Requirements
 

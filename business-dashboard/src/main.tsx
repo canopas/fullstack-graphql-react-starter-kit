@@ -5,8 +5,9 @@ import "./assets/css/index.css";
 import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
 import PageNotFound from "./components/Error/404";
 import { store, persistor } from "./store";
-import { Provider, useSelector } from "react-redux";
+import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
+import { registerSW } from "virtual:pwa-register";
 
 const client = new ApolloClient({
   uri: import.meta.env.VITE_GRAPHQL_SERVER_URL,
@@ -17,6 +18,8 @@ const client = new ApolloClient({
 
 let businessId: string = window.location.pathname.split("/")[1];
 localStorage.setItem("businessId", businessId);
+
+registerSW({ immediate: true });
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <Provider store={store}>

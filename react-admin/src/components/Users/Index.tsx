@@ -25,10 +25,12 @@ import { Email } from "../Email/approval";
 import { sendSESMail } from "../../config/utils.js";
 import { messages, status } from "../../config/const.js";
 import bcrypt from "bcryptjs";
+import useLocalStorage from "../../hooks/useLocalStorage.js";
 
 library.add(faEdit, faTrash);
 
 const Users = () => {
+  const [loggedUser]: any = useLocalStorage("user", "");
   const [successAlert, setSuccessAlert] = useState(false);
   const [errorAlert, setErrorAlert] = useState(false);
   const [modalContent, setModalContent] = useState("");
@@ -251,15 +253,19 @@ const Users = () => {
                       />
                     </div>
 
-                    <div className="flex items-center justify-center gap-4 p-2.5 xl:p-5">
-                      <Link to={"/user/edit/" + user.id}>
-                        <FontAwesomeIcon icon={faEdit} />
-                      </Link>
-                      <FontAwesomeIcon
-                        icon={faTrash}
-                        onClick={() => handleDelete(user.id)}
-                      />
-                    </div>
+                    {user.id != loggedUser.id ? (
+                      <div className="flex items-center justify-center gap-4 p-2.5 xl:p-5">
+                        <Link to={"/user/edit/" + user.id}>
+                          <FontAwesomeIcon icon={faEdit} />
+                        </Link>
+                        <FontAwesomeIcon
+                          icon={faTrash}
+                          onClick={() => handleDelete(user.id)}
+                        />
+                      </div>
+                    ) : (
+                      ""
+                    )}
                   </div>
                 );
               })
