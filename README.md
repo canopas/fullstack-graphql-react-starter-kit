@@ -1,4 +1,4 @@
-<h1 align="center"><strong>Boilerplate Project with GraphQL, ReactJS, NodeJS, and MySQL</strong></h1>
+<h1 align="center"><strong>Boilerplate with GraphQL, ReactJS, NodeJS, and MySQL</strong></h1>
 
 This boilerplate project provides a solid foundation for developing web applications using GraphQL, ReactJS, NodeJS, and MySQL. With its intuitive architecture and powerful technologies, this project template empowers developers to quickly build scalable and efficient applications.
 
@@ -6,7 +6,7 @@ This includes essential configurations, common components, and best practices to
 
 ## Project structure
 
-Project has 4 sub-projects to handle all the functionalities of the project.
+The project has 4 sub-projects to handle all the functionalities of the project.
 
 - [Backend](https://github.com/canopas/omniDashboard/tree/main/backend) - Contains GraphQL APIs
 - [React Admin](https://github.com/canopas/omniDashboard/tree/main/react-admin) - Admin panel to manage data
